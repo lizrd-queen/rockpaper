@@ -7,20 +7,15 @@ function getComputerChoice(){
 }
 
 function getPlayerChoice(){
-    let validatedInput = false;
-    while(validatedInput == false){
-        const choice = prompt("rock paper scissors");
-        if(choice == null){
-            continue;
+    const wrapper = document.getElementById('wrapper');
+    wrapper.forEach((button) => {
+        if (button.id) {
+            playRound(button.id);
         }
-        const choiceinLower = choice.toLowerCase();
-        if(options.includes(choiceinLower)){
-            validatedInput = true;
-             return choiceinLower;
 
-        }
-}
-}
+    })
+};
+
 
 
 function checkWinner(playerSelection,computerSelection){
@@ -29,7 +24,7 @@ function checkWinner(playerSelection,computerSelection){
     }   
     else if(
         (playerSelection === "rock" && computerSelection === "scissors") ||
-        (playerSelection === "scissors" && computerSelection === paper) ||
+        (playerSelection === "scissors" && computerSelection === "paper") ||
         (playerSelection === "paper" && computerSelection === "rock")
     ){
         return "player"
@@ -59,16 +54,9 @@ else {
 function game(){
     let scorePlayer = 0;
     let scoreComputer =0;
-    console.log("Welcome!")
-    for (let i= 0; i <5; i++){
-        if(i === 0){
-            console.log("First Round!");
-        }
-        else if(i === 4){
-            console.log("Last Round!");
-        }
+    
         
-        const playerSelection = getPlayerChoice();
+        const playerSelection = getPlayerChoice;
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
         if(checkWinner(playerSelection,computerSelection) === "player"){
@@ -79,7 +67,7 @@ function game(){
     }
 
 
-    }
+    
     console.log("game over")
    
     if(scorePlayer >scoreComputer){
@@ -92,5 +80,8 @@ function game(){
             console.log("We have a tie!")
     }
 }
+
+
+
 
 game()

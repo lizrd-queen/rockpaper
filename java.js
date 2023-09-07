@@ -1,87 +1,33 @@
-const options = ["rock", "paper","scissors"];
-
-function getComputerChoice(){
-    const choice = options[Math.floor(Math.random() * options.length)]
-    console.log(choice);
-    return choice;
+let options = ["rock","paper","scissors"]
+const wrapper = document.getElementById('wrapper');
+let buttons = document.querySelectorAll(".btn");
+function getComputerChoice() {
+    const computerSelection = options[Math.floor(Math.random() * options.length)] //generate number, multiply by length
+    console.log(computerSelection)
 }
-
-function getPlayerChoice(){
-    const wrapper = document.getElementById('wrapper');
-    wrapper.forEach((button) => {
-        if (button.id) {
-            playRound(button.id);
+function playGame() {
+  let playerSelection;
+   buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        if(button.classList.contains('rock')){
+          playerSelection = rock;
+        };
+        if(button.classList.contains('paper')){
+          playerSelection = rock;
+        };
+        if(button.classList.contains('scissors')){
+          playerSelection = rock;
         }
-
-    })
-};
-
-
-
-function checkWinner(playerSelection,computerSelection){
-    if(playerSelection === computerSelection){
-        return "Tie";
-    }   
-    else if(
-        (playerSelection === "rock" && computerSelection === "scissors") ||
-        (playerSelection === "scissors" && computerSelection === "paper") ||
-        (playerSelection === "paper" && computerSelection === "rock")
-    ){
-        return "player"
-    }
-    else {
-        return "Computer";
-    }
-}
-
-function playRound(playerSelection, computerSelection){
-    const result = checkWinner(playerSelection, computerSelection)
-    if(result === "tie"){
-        return "TIE!!!!"
-    }
-else if(result === "player"){
-    return `you are da winna man! ${playerSelection} beats ${computerSelection}`
-}
-else {
-    return `you losea man! ${computerSelection} beats ${playerSelection}`
-}
-}
-
-
-
-
-
-function game(){
-    let scorePlayer = 0;
-    let scoreComputer =0;
+      
     
-        
-        const playerSelection = getPlayerChoice;
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-        if(checkWinner(playerSelection,computerSelection) === "player"){
-        scorePlayer++;
-    }
-    else if(checkWinner(playerSelection, computerSelection) === "computer") {
-        scoreComputer++;
-    }
-
-
     
-    console.log("game over")
-   
-    if(scorePlayer >scoreComputer){
-        console.log("Player was the winner");
+    playRound(playerSelection, computerSelection);
+
+    if (playerScore === 5 || computerScore === 5) {
+      declareWinner();
     }
-    else if(scorePlayer < scoreComputer){
-        console.log("Computer was the winner");
-        }
-        else{
-            console.log("We have a tie!")
-    }
+  });
+});
 }
 
-
-
-
-game()
+playGame()

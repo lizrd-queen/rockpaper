@@ -1,33 +1,36 @@
 let options = ["rock","paper","scissors"]
 const wrapper = document.getElementById('wrapper');
 let buttons = document.querySelectorAll(".btn");
-function getComputerChoice() {
-    const computerSelection = options[Math.floor(Math.random() * options.length)] //generate number, multiply by length
-    console.log(computerSelection)
-}
-function playGame() {
-  let playerSelection;
-   buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-        if(button.classList.contains('rock')){
-          playerSelection = rock;
-        };
-        if(button.classList.contains('paper')){
-          playerSelection = rock;
-        };
-        if(button.classList.contains('scissors')){
-          playerSelection = rock;
-        }
-      
-    
-    
-    playRound(playerSelection, computerSelection);
+const results = document.getElementById('results');
+const computerSelection = options[Math.floor(Math.random() * options.length)] //generate number, multiply by length
 
-    if (playerScore === 5 || computerScore === 5) {
-      declareWinner();
+
+function playRound(playerSelection, computerSelection) {
+  buttons.forEach((btn) => {
+    if(btn.classList.contains('rock')){
+      playerSelection = rock;
     }
-  });
-});
+    if(btn.classList.contains('paper')){
+      playerSelection = paper;
+    }
+    if(btn.classList.contains('scissor')){
+      playerSelection = scissor;
+    }
+
+  })
+
+
+  if (computerSelection == playerSelection) {
+    results.textContent = "Tie game!";
+  }
+  
+    else {
+      results.textContent = "bello";
+    }
+
 }
 
-playGame()
+
+
+
+playRound()

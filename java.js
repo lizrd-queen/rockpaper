@@ -1,5 +1,3 @@
-
-const wrapper = document.getElementById('wrapper');
 let buttons = document.querySelectorAll(".btn");
 const results = document.getElementById('results');
 
@@ -59,7 +57,7 @@ function endGame(playerHealth, computerHealth) {
       results.innerText = 'mfw u freakin killed him -_-';
       gameEndText.textContent = 'You Won!';
     } else {
-      combatText.innerText = 'u got killed haha';
+      results.innerText = 'u got killed haha';
       gameEndText.textContent = 'You lost, idiot';
       
     }
@@ -71,17 +69,17 @@ function playRound() {
   let playerSelection;
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
-    if(choice.classList.contains('rock')){
-      playerSelection = rock;
+    if(button.classList.contains('rock')){
+      playerSelection = 'rock';
     }
     if(button.classList.contains('paper')){
-      playerSelection = paper;
+      playerSelection = 'paper';
     }
     if(button.classList.contains('scissor')){
-      playerSelection = scissor;
+      playerSelection = 'scissor';
     }
     countRounds();
-    countLives(playerSelection, computerPlay());
+    countLives(playerSelection, getComputerChoice());
     endGame(playerLives, computerLives);
       
   })

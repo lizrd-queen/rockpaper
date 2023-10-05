@@ -2,6 +2,7 @@ let buttons = document.querySelectorAll(".btn");
 const buttonContainer = document.querySelector('.button-container');
 const pickOne = document.querySelector(".pickOne");
 const results = document.querySelector(".results");
+const gameEndText = document.querySelector("game-end-text");
 let playerSelection;
 
 let playerLives = 5;
@@ -44,14 +45,14 @@ function countLives(playerSelection, computerSelection) {
 
 }
 const lives = document.querySelector('.lives');
-lives.innerText = `Your Lives: ${playerLives} ︱ Enemy's Lives: ${computerLives}`;
+lives.innerText= `Your Lives: ${playerLives} ︱ Enemy's Lives: ${computerLives}`;
 return [playerLives, computerLives];
 }
 
 function endGame(playerHealth, computerHealth) {
   if (playerHealth === 0 || computerHealth === 0) {
-    buttons.forEach((btn) => {
-      btn.setAttribute('disabled', '');
+    buttons.forEach((button) => {
+      button.setAttribute('disabled', '');
     });
     const gameEndText = document.querySelector('.game-end-text');
     if (playerLives > computerLives) {
